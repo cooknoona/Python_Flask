@@ -13,3 +13,11 @@ def perform_web_crawling():
 
 def job():
     print("스케쥴링을 시작 합니다")
+    perform_web_crawling()
+
+# 매일 정해진 시간에 동작하도록 구현
+schedule.every().day.at("09:44").do(job)
+
+while True:
+    schedule.run_pending()  # 대기중인 작업을 수행하는 함수
+    time.sleep(1)           # 1초마다 반복 수행
